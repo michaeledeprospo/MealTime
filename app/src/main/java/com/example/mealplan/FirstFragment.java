@@ -1,5 +1,7 @@
 package com.example.mealplan;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ public class FirstFragment extends Fragment {
     EditText calorieEdit;
     String calories;
     Button submit;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -26,12 +29,20 @@ public class FirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         calorieEdit = view.findViewById(R.id.editTextNumber);
         submit = view.findViewById(R.id.button);
+        final MySharedPreferences myPref = MySharedPreferences.getInstance(view.getContext());
+        Log.d("current", getString(R.string.calories));
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 calories = calorieEdit.getText().toString();
                 Log.d("Butts", calories);
+                //use constants file r.string blah blah
+                Log.d("prevButts", myPref.getString("calories"));
+                myPref.putString("calories", calories);
+                Log.d("afterButts", myPref.getString("calories"));
+
             }
         });
 
