@@ -42,6 +42,8 @@ public class FirstFragment extends Fragment {
                 Log.d("prevButts", myPref.getString("calories"));
                 myPref.putString("calories", calories);
                 Log.d("afterButts", myPref.getString("calories"));
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
 
             }
         });
