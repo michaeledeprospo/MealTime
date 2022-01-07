@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mealplan.model.Meal;
 import com.example.mealplan.view.SimpleAdapter;
 import com.example.mealplan.view.SimpleViewModel;
 
@@ -32,7 +33,7 @@ public class SecondFragment extends Fragment {
 
 
         SimpleAdapter adapter = new SimpleAdapter(generateSimpleList());
-        RecyclerView rec = (RecyclerView) view.findViewById(R.id.rec);
+        RecyclerView rec = view.findViewById(R.id.rec);
         rec.setLayoutManager(new LinearLayoutManager(view.getContext()));
         rec.setHasFixedSize(true);
         rec.setAdapter(adapter);
@@ -52,12 +53,11 @@ public class SecondFragment extends Fragment {
 
     }
     //helper method to generate list of dummy meals - this will be replaced with meal data from api
-    private List<SimpleViewModel> generateSimpleList(){
-        List<SimpleViewModel> cock = new ArrayList<>();
+    private List<Meal> generateSimpleList(){
+        List<Meal> cock = new ArrayList<>();
 
         for(int i = 0; i< 10; i++){
-            //replace with meal
-            cock.add(new SimpleViewModel(String.format(Locale.US, "This is meal # %d", i)));
+            cock.add(new Meal(String.format(Locale.US, "This is meal # %d", i)));
         }
         return cock;
     }

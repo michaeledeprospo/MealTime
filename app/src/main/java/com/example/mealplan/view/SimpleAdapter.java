@@ -13,9 +13,10 @@ import com.example.mealplan.model.Meal;
 import java.util.List;
 
 public class SimpleAdapter extends RecyclerView.Adapter {
-    List<SimpleViewModel> models;
+    //List<SimpleViewModel> models;
+    List<Meal> models;
 
-    public SimpleAdapter(List<SimpleViewModel> models){
+    public SimpleAdapter(List<Meal> models){
         this.models= models;
     }
     @NonNull
