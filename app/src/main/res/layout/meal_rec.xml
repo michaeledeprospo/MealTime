@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/meal_type_text_view"
+        android:layout_width="61dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="245dp"
+        android:layout_marginBottom="345dp"
+        android:gravity="center"
+        android:text="TextView"></TextView>
+
+    <TextView
+        android:id="@+id/category_text_view"
+        android:layout_width="41dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="226dp"
+        android:layout_marginBottom="645dp"
+        android:gravity="center"
+        android:text="TextView"></TextView>
+
+    <TextView
+        android:id="@+id/name_text_view"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="106dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="106dp"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/calories_text_view"
+        android:layout_width="136dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="445dp"
+        android:gravity="center"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/protein_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:gravity="center" />
+    <TextView
+        android:id="@+id/fat_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/carbs_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:gravity="center"></TextView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--        tools:layout_editor_absoluteX="171dp"-->
+<!--        tools:layout_editor_absoluteY="275dp" />-->
+</FrameLayout>
