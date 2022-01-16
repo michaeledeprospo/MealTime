@@ -36,34 +36,25 @@ public class SecondFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_second, container, false);
         apiTest = view.findViewById(R.id.button2);
-        final MealDataService mealDataService = new MealDataService(this.getContext());
-        mealList = new ArrayList<>();
-        apiTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mealDataService.getMealInfo("pasta", new MealDataService.VolleyResponseListener() {
-                    @Override
-                    public void onError(String message) {
-                        Log.d("first frag", "something wrong " + message);
-                    }
 
-                    @Override
-                    public void onResponse(Meal meal) {
-                        mealList.add(meal);
-                        Log.d("first frag", "something right " + meal);
-                        NavHostFragment.findNavController(SecondFragment.this)
-                                .navigate(R.id.refresh_SecondFragment);
-                    }
-                });
-
-            }
-        });
         //need 4 async
-        SimpleAdapter adapter = new SimpleAdapter(mealList);
+        final MainActivity mainActivity = (MainActivity) getActivity();
+
+//        List<Meal> cock = mainActivity.getMeals();
+//        Log.d("cock in ass", cock.toString());
+        SimpleAdapter adapter = mainActivity.adapter;
         RecyclerView rec = view.findViewById(R.id.rec);
         rec.setLayoutManager(new LinearLayoutManager(view.getContext()));
         rec.setHasFixedSize(true);
         rec.setAdapter(adapter);
+        apiTest = view.findViewById(R.id.button2);
+        apiTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.fetchMeals("pasta");
+
+            }
+        });
         return view;
     }
 

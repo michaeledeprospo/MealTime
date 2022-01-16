@@ -98,4 +98,9 @@ public class Meal {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString(){
+        return "cock " + calories.toString() + "weeeeeeeeeeeee" + fat.toString();
+    }
 }

@@ -39,4 +39,8 @@ public class SimpleAdapter extends RecyclerView.Adapter {
     public int getItemViewType(final int position) {
         return R.layout.meal_rec;
     }
+
+    public void setMeals(List<Meal> meals){
+        models = meals;
+    }
 }

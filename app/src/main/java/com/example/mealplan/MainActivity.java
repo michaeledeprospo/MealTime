@@ -2,26 +2,38 @@ package com.example.mealplan;
 
 import android.os.Bundle;
 
+import com.example.mealplan.model.Meal;
+import com.example.mealplan.service.MealDataService;
+import com.example.mealplan.view.SimpleAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.fragment.NavHostFragment;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
+    List<Meal> meals;
+    SimpleAdapter adapter;
+    final MealDataService mealDataService = new MealDataService(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        meals = new ArrayList<>();
+        adapter = new SimpleAdapter(meals);
+//        fetchMeals("pasta");
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +66,31 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void test(){
 
+
+    public void fetchMeals(String mealName){
+        final List<Meal> cock = new ArrayList<>();
+        mealDataService.getMealInfo(mealName,  new MealDataService.VolleyResponseListener() {
+             @Override
+             public void onError(String message) {
+                 Log.d("first frag", "something wrong " + message);
+             }
+
+             @Override
+             public void onResponse(Meal meal) {
+                 meals.add(meal);
+                 adapter.setMeals(meals);
+                 adapter.notifyDataSetChanged();
+                 Log.d("first frag", "something right " + meal.toString());
+             }
+         });
+//        Log.d("cock in butt", cock.toString());
+//        meals = cock;
+//        adapter.setMeals(meals);
+//        adapter.notifyDataSetChanged();
+    }
+
+    public List<Meal> getMeals(){
+        return meals;
     }
 }

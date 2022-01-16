@@ -10,8 +10,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.mealplan.MainActivity;
 import com.example.mealplan.controller.NetworkRequestSingleton;
 import com.example.mealplan.model.Meal;
+import com.example.mealplan.view.SimpleAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,18 +44,21 @@ public class MealDataService {
                         Meal meal = new Meal();
                         try {
                             JSONArray queryInfo = response.getJSONArray("results");
-                            mealID = queryInfo.getJSONObject(0).getString("id");
-                            meal.setName(queryInfo.getJSONObject(0).getString("title"));
-                            meal.setCalories(Integer.parseInt(queryInfo.getJSONObject(0).getString("id")));
-                            Log.d("mealId", mealID);
+                            for(int i = 0; i<queryInfo.length();i++) {
+                                mealID = queryInfo.getJSONObject(i).getString("id");
+                                meal.setName(queryInfo.getJSONObject(i).getString("title"));
+                                meal.setMealType(queryInfo.getJSONObject(i).getString("image"));
+                                meal.setCalories(Integer.parseInt(queryInfo.getJSONObject(i).getString("id")));
+                                Log.d("mealId", mealID);
+
+                                Log.d("successapi", response.toString());
+
+
+                                volleyResponseListener.onResponse(meal);
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Log.d("successapi", response.toString());
-
-
-                        volleyResponseListener.onResponse(meal);
-
                     }
                 }, new Response.ErrorListener() {
             @Override
