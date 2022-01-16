@@ -68,27 +68,27 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void fetchMeals(String mealName){
-        final List<Meal> cock = new ArrayList<>();
-        mealDataService.getMealInfo(mealName,  new MealDataService.VolleyResponseListener() {
-             @Override
-             public void onError(String message) {
-                 Log.d("first frag", "something wrong " + message);
-             }
+    public void fetchMeals(final String mealName){
 
-             @Override
-             public void onResponse(Meal meal) {
-                 meals.add(meal);
-                 adapter.setMeals(meals);
-                 adapter.notifyDataSetChanged();
-                 Log.d("first frag", "something right " + meal.toString());
-             }
-         });
-//        Log.d("cock in butt", cock.toString());
-//        meals = cock;
-//        adapter.setMeals(meals);
-//        adapter.notifyDataSetChanged();
-    }
+                final List<Meal> cock = new ArrayList<>();
+                mealDataService.getMealInfo(mealName,  new MealDataService.VolleyResponseListener() {
+                    @Override
+                    public void onError(String message) {
+                        Log.d("first frag", "something wrong " + message);
+                    }
+
+                    @Override
+                    public void onResponse(Meal meal) {
+                        meals.add(meal);
+                        adapter.setMeals(meals);
+                        adapter.notifyDataSetChanged();
+                        Log.d("first frag", "something right " + meal.toString());
+                    }
+                });
+            }
+
+
+
 
     public List<Meal> getMeals(){
         return meals;

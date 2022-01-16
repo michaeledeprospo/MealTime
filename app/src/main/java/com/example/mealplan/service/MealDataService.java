@@ -41,13 +41,19 @@ public class MealDataService {
                     @Override
                     public void onResponse(JSONObject response) {
                         String mealID = "";
-                        Meal meal = new Meal();
+
                         try {
                             JSONArray queryInfo = response.getJSONArray("results");
+                            Log.d("querylen", String.valueOf(queryInfo.length()));
+                            Log.d("queryinfo", queryInfo.toString());
                             for(int i = 0; i<queryInfo.length();i++) {
+                                Meal meal = new Meal();
+
+                                Log.d("query@", String.valueOf(queryInfo.getJSONObject(i)));
                                 mealID = queryInfo.getJSONObject(i).getString("id");
                                 meal.setName(queryInfo.getJSONObject(i).getString("title"));
                                 meal.setMealType(queryInfo.getJSONObject(i).getString("image"));
+                                meal.setImageUrl(queryInfo.getJSONObject(i).getString("image"));
                                 meal.setCalories(Integer.parseInt(queryInfo.getJSONObject(i).getString("id")));
                                 Log.d("mealId", mealID);
 

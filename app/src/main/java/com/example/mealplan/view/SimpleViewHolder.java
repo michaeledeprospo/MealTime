@@ -1,16 +1,22 @@
 package com.example.mealplan.view;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mealplan.R;
 import com.example.mealplan.model.Meal;
+import com.squareup.picasso.Picasso;
+
 
 public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private TextView nameTextView, caloriesTextView, proteinTextView, fatTextView, carbsTextView, categoryTextView, mealTypeTextView;
+    private ImageView image;
 
     public SimpleViewHolder(final View itemView) {
         super(itemView);
@@ -23,6 +29,7 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
         carbsTextView = itemView.findViewById(R.id.carbs_text_view);
         categoryTextView = itemView.findViewById(R.id.category_text_view);
         mealTypeTextView = itemView.findViewById(R.id.meal_type_text_view);
+        image = itemView.findViewById(R.id.imageView);
     }
     public void bindData(final Meal meal) {
 //        simpleTextView.setText(meal.getName());
@@ -35,6 +42,17 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
 
         mealTypeTextView.setText(meal.getMealType());
 
+        Handler uiHandler = new Handler(Looper.getMainLooper());
+        image.setImageDrawable(null);
+        uiHandler.post(new Runnable(){
+            @Override
+            public void run() {
+                Picasso.get()
+                        .load(meal.getImageUrl())
+                        .into(image);
+            }
+        });
+        Log.d("render1","adsad");
 
     }
 
@@ -42,4 +60,6 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
     public void onClick(View v){
         Log.d("nuts", "click");
     }
+
+
 }

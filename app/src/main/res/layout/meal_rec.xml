@@ -67,6 +67,14 @@
         android:text="TextView"
         android:gravity="center"></TextView>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="83dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="160dp"
+        tools:srcCompat="@android:mipmap/sym_def_app_icon" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
