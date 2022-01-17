@@ -11,6 +11,7 @@ public class Meal {
     private Integer carbs;
     private String category;
     private String mealType;
+    private String imageUrl;
 
     //make an api rquest to somethign -> myfitnesspal
     //{food: fries, type: bad}
@@ -73,6 +74,14 @@ public class Meal {
         this.mealType = mealType;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Meal(){
         this.calories = 12;
         this.protein = 13;
@@ -80,6 +89,7 @@ public class Meal {
         this.carbs = 9;
         this.category = "cock";
         this.mealType = "poop";
+        this.imageUrl = "";
     }
     public Meal(@NonNull String name){
         this.name = name;
