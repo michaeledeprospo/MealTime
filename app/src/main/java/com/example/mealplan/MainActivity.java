@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     List<Meal> meals;
+    List<String> cuisines = new ArrayList<>();
     SimpleAdapter adapter;
     final MealDataService mealDataService = new MealDataService(this);
     @Override
@@ -92,5 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
     public List<Meal> getMeals(){
         return meals;
+    }
+    public List<String> getCuisines(){
+        return cuisines;
+    }
+    public void setCuisines(List<String> cuisines){
+        this.cuisines = cuisines;
     }
 }

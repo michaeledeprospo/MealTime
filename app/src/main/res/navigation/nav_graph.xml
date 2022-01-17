@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_foodGenreFragment"
+            app:destination="@id/foodGenreFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -28,4 +31,14 @@
             android:id="@+id/refresh_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/foodGenreFragment"
+        android:name="com.example.mealplan.firstTimeFlow.FoodGenreFragment"
+        android:label="FoodGenreFragment" >
+        <action
+            android:id="@+id/action_foodGenreFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+
+
 </navigation>

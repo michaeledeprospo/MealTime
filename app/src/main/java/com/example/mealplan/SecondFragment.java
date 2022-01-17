@@ -48,11 +48,16 @@ public class SecondFragment extends Fragment {
         rec.setHasFixedSize(true);
         rec.setAdapter(adapter);
         apiTest = view.findViewById(R.id.button2);
+
+        final List<String> cuisine = mainActivity.getCuisines();
         apiTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.fetchMeals("pasta");
-
+                for(String s: cuisine) {
+//                    mainActivity.fetchMeals("pasta");
+                    Log.d("cuisineIs", s);
+                    mainActivity.fetchMeals(s);
+                }
             }
         });
         return view;
