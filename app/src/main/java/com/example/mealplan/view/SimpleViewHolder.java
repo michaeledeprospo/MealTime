@@ -4,6 +4,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +19,8 @@ import com.squareup.picasso.Picasso;
 public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private TextView nameTextView, caloriesTextView, proteinTextView, fatTextView, carbsTextView, categoryTextView, mealTypeTextView;
     private ImageView image;
+    private ImageButton select;
+    private boolean selected = false;
 
     public SimpleViewHolder(final View itemView) {
         super(itemView);
@@ -30,6 +34,24 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
         categoryTextView = itemView.findViewById(R.id.category_text_view);
         mealTypeTextView = itemView.findViewById(R.id.meal_type_text_view);
         image = itemView.findViewById(R.id.imageView);
+        select = itemView.findViewById(R.id.addMealBTN);
+        select.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                select.setImageDrawable(null);
+                Log.d("clickedya", String.valueOf(selected));
+                if(selected){
+                    select.setBackgroundResource(R.drawable.ic_circle_remove);
+                    selected = false;
+                    //add and remove from local display storage or whatever - TBD USE FIREBASE
+                }
+                else {
+                    select.setBackgroundResource(R.drawable.ic_circle_add);
+                    selected = true;
+                }
+            }
+        });
+
     }
     public void bindData(final Meal meal) {
 //        simpleTextView.setText(meal.getName());
