@@ -46,7 +46,6 @@ public class FirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         calorieEdit = view.findViewById(R.id.editTextNumber);
         submit = view.findViewById(R.id.button);
-        apiTest = view.findViewById(R.id.api_test);
         final MySharedPreferences myPref = MySharedPreferences.getInstance(view.getContext());
         Log.d("current", getString(R.string.calories));
 
@@ -62,23 +61,11 @@ public class FirstFragment extends Fragment {
                 myPref.putString("calories", calories);
                 Log.d("afterButts", myPref.getString("calories"));
                 NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_FirstFragment_to_foodGenreFragment);
 
             }
         });
 
         return view;
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_foodGenreFragment);
-            }
-        });
     }
 }
