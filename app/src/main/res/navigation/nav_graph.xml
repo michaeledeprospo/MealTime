@@ -21,10 +21,10 @@
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
 
+        <action
+            android:id="@+id/action_SecondFragment_to_mealPlanFragment"
+            app:destination="@id/mealPlanFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodGenreFragment"
@@ -34,6 +34,10 @@
             android:id="@+id/action_foodGenreFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mealPlanFragment"
+        android:name="com.example.mealplan.MealPlanFragment"
+        android:label="MealPlanFragment" />
 
 
 </navigation>

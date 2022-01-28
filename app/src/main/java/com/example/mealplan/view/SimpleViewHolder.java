@@ -4,16 +4,19 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+
+import com.example.mealplan.MySharedPreferences;
 import com.example.mealplan.R;
 import com.example.mealplan.model.Meal;
 import com.squareup.picasso.Picasso;
+
 
 
 public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -21,7 +24,6 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
     private ImageView image;
     private ImageButton select;
     private boolean selected = false;
-
     public SimpleViewHolder(final View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
@@ -35,19 +37,26 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
         mealTypeTextView = itemView.findViewById(R.id.meal_type_text_view);
         image = itemView.findViewById(R.id.imageView);
         select = itemView.findViewById(R.id.addMealBTN);
+        final MySharedPreferences myPref = MySharedPreferences.getInstance(itemView.getContext());
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 select.setImageDrawable(null);
                 Log.d("clickedya", String.valueOf(selected));
                 if(selected){
+                    myPref.putString(caloriesTextView.getText().toString(), null);
                     select.setBackgroundResource(R.drawable.ic_circle_remove);
                     selected = false;
                     //add and remove from local display storage or whatever - TBD USE FIREBASE
                 }
                 else {
+
+//https://stackoverflow.com/questions/30284067/handle-button-click-inside-a-row-in-recyclerview
+
+                    myPref.putString(caloriesTextView.getText().toString(),caloriesTextView.getText().toString());
                     select.setBackgroundResource(R.drawable.ic_circle_add);
                     selected = true;
+
                 }
             }
         });
