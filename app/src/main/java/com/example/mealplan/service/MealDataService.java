@@ -21,6 +21,10 @@ import org.json.JSONObject;
 
 public class MealDataService {
     public static final String SPOONTACULAR_ENDPOINT = "https://api.spoonacular.com/recipes/complexSearch";
+    //{{baseUrl}}/recipes/642539/information?apiKey=7917d42088bd445ab8eac6fd2324df0e&includeNutrition=true
+    //{{baseUrl}}/recipes/642539/nutritionWidget.json/?apiKey=7917d42088bd445ab8eac6fd2324df0e
+    public static final String SPOONTACULAR_ENDPOINT_ID = "https://api.spoonacular.com/recipes"; // + id + /nutritionWidget.json/ + apikey
+    public static final String API_KEY = "?apiKey=7917d42088bd445ab8eac6fd2324df0e";
     Context context;
 
     public MealDataService(Context context){
@@ -33,7 +37,7 @@ public class MealDataService {
         void onResponse(Meal meal);
     }
     public void getMealInfo(String mealName, final VolleyResponseListener volleyResponseListener){
-        String url = SPOONTACULAR_ENDPOINT + "?apiKey=7917d42088bd445ab8eac6fd2324df0e&query=" + mealName; //lol wont be a query string need json param i assume
+        String url = SPOONTACULAR_ENDPOINT + API_KEY + "&query=" + mealName; //lol wont be a query string need json param i assume
         String cock = "";
 
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.GET, url,null,
