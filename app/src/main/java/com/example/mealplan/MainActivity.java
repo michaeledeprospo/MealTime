@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     List<Meal> meals;
+    List<String> mealIds;
     List<String> cuisines = new ArrayList<>();
     SimpleAdapter adapter;
     final MealDataService mealDataService = new MealDataService(this);
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Meal meal) {
                         meals.add(meal);
+                        mealIds.add(meal.getCalories()); //aka id
                         adapter.setMeals(meals);
                         adapter.notifyDataSetChanged();
                         Log.d("first frag", "something right " + meal.toString());
@@ -99,5 +101,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setCuisines(List<String> cuisines){
         this.cuisines = cuisines;
+    }
+    public List<String> getMealIds(){
+        return mealIds;
     }
 }

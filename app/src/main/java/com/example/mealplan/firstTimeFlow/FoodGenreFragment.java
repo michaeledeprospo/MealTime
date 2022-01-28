@@ -101,11 +101,17 @@ public class FoodGenreFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        final MainActivity mainActivity = (MainActivity) getActivity();
         //move to next frag
         view.findViewById(R.id.addGenres).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                List<String> cuisines = mainActivity.getCuisines();
+                for(String s: cuisines) {
+//                    mainActivity.fetchMeals("pasta");
+                    Log.d("cuisineIs", s);
+                    mainActivity.fetchMeals(s);
+                }
                 NavHostFragment.findNavController(FoodGenreFragment.this)
                         .navigate(R.id.action_foodGenreFragment_to_SecondFragment);
             }

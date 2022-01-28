@@ -27,14 +27,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/generateplan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="146dp"
-        android:layout_marginEnd="163dp"
-        android:text="fetch"
+        android:layout_marginStart="147dp"
+        android:layout_marginTop="403dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="33dp"
+        android:text="Generate PLan"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rec" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
