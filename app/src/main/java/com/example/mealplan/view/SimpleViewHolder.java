@@ -37,16 +37,19 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
         mealTypeTextView = itemView.findViewById(R.id.meal_type_text_view);
         image = itemView.findViewById(R.id.imageView);
         select = itemView.findViewById(R.id.addMealBTN);
+        select.setVisibility(View.VISIBLE);
+        select.setBackgroundResource(R.drawable.ic_circle_add);
         final MySharedPreferences myPref = MySharedPreferences.getInstance(itemView.getContext());
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 select.setImageDrawable(null);
+
                 Log.d("clickedya", String.valueOf(selected));
-                if(selected){
+                if(!selected){
                     myPref.putString(caloriesTextView.getText().toString(), null);
                     select.setBackgroundResource(R.drawable.ic_circle_remove);
-                    selected = false;
+                    selected = true;
                     //add and remove from local display storage or whatever - TBD USE FIREBASE
                 }
                 else {
@@ -55,7 +58,7 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
 
                     myPref.putString(caloriesTextView.getText().toString(),caloriesTextView.getText().toString());
                     select.setBackgroundResource(R.drawable.ic_circle_add);
-                    selected = true;
+                    selected = false;
 
                 }
             }
@@ -65,14 +68,21 @@ public class SimpleViewHolder extends RecyclerView.ViewHolder implements View.On
     public void bindData(final Meal meal) {
 //        simpleTextView.setText(meal.getName());
         nameTextView.setText(meal.getName());
-        categoryTextView.setText(meal.getCategory());
         caloriesTextView.setText( meal.getCalories());
-        proteinTextView.setText(meal.getProtein());
-        fatTextView.setText(meal.getFat());
-        carbsTextView.setText(meal.getCarbs());
+//        categoryTextView.setText(meal.getCategory());
+//
+//        proteinTextView.setText(meal.getProtein());
+//        fatTextView.setText(meal.getFat());
+//        carbsTextView.setText(meal.getCarbs());
+//
+//        mealTypeTextView.setText(meal.getMealType());
+        categoryTextView.setText("");
 
-        mealTypeTextView.setText(meal.getMealType());
+        proteinTextView.setText("");
+        fatTextView.setText("");
+        carbsTextView.setText("");
 
+        mealTypeTextView.setText("");
         Handler uiHandler = new Handler(Looper.getMainLooper());
         image.setImageDrawable(null);
         uiHandler.post(new Runnable(){
