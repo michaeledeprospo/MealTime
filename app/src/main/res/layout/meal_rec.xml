@@ -34,9 +34,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="85dp"
-        android:fontFamily="sans-serif-black"
+        android:fontFamily="@font/roboto_slab_light"
         android:gravity="center"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -75,15 +76,15 @@
         android:layout_width="265dp"
         android:layout_height="135dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="140dp"
         tools:srcCompat="@android:mipmap/sym_def_app_icon" />
 
     <ImageButton
         android:id="@+id/addMealBTN"
         android:layout_width="36dp"
         android:layout_height="29dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="238dp"
         android:elevation="180dp"
         android:visibility="invisible" />
 
